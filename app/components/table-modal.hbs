@@ -1,0 +1,61 @@
+    <div class="modal">
+        <table>
+            <thead>
+                <tr>
+                    <th>Field Values</th>
+                    <th>count</th>
+                    <th>percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each @tableData as |data|}}
+                    <tr>
+                        <td>{{data.fieldKeys}}</td>
+                        <td>{{data.count}}</td>
+                        <td>{{data.percentage}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+<style>
+.modal {
+  position: absolute;
+  top:28%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 4px;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #eaeaea;
+}
+</style>
+
+

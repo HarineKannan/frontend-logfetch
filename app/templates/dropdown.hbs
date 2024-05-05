@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <img {{on "click" this.toggleMenu}} class="menu-icon" src="assets/images/threedots.png" alt="three dots icon">
+    {{#if this.menuClicked}}
+        <select onchange={{action this.handleLeastValuesSelection}}>
+            <option value="">Select Type of Values</option>
+            <option value="LeastValues">Least Values</option>
+            <option value="TopValues">Top Values</option>
+        </select>
+    {{/if}}
+</div>

@@ -1,0 +1,200 @@
+<div class="parent-container">
+<div class="container">
+  <h1><center>Log Collection</center></h1>
+
+     {{#if this.isLoading}}
+        <div class="imageForLoading">
+          <img src="assets/images/loading.gif" alt="Loading Image">
+        </div>
+      {{/if}}
+
+      {{#if this.isSuccess}}
+      <div class="imageForSuccess">
+          <img src="assets/images/completed.jpg" alt="completed Image">
+        </div>
+      {{/if}}
+
+    <div class="form-group">
+      <label for="logType">Select the logs you want:</label>
+        <select id="logType" onchange={{action (mut this.selectedLogType) value="target.value"}}>
+                <option value="">Select Log Type</option>
+                <option value="Application">Application Logs</option>
+                <option value="System">System Logs</option>
+            </select>
+    </div>
+
+    <div class="form-group buttons-container">
+        <button class="btn" {{on "click" this.fetchLogs}}>Sync </button>
+   </div>
+  
+   <div class="search-bar">
+      <div class="form-group">
+         <p>Search with a Query: </p>
+        <input type="text"  id="searchQuery"  value={{this.searchQuery}} placeholder="Search like eventcode = '16384' or eventidentifier = '1073758208'" 
+             {{on "change" (action (mut this.searchQuery) value="target.value")}} {{on "input" this.handleInput}} 
+             {{on "keydown" this.handleKeyDown}}  
+              tabindex="0" >
+             {{#if this.syntaxError}}
+                <div class="suggestions-container">
+                  {{#each this.syntaxErrorMessage as |token index|}}
+                       <div class="suggestion-box" {{on "click" (fn this.selectSuggestion token)}}  
+                       {{on "mouseenter" (fn (mut this.selectedSuggestionIndex) index)}} >
+                           {{token}}
+                       </div>
+                  {{/each}}
+                </div>
+             {{/if}}
+       </div>
+    <div class="form-group buttons-container">
+        <button class="btn" {{on "click" this.searchLogs}}  disabled={{if this.searchPerformed "disabled"}} oninput={{action (mut this.searchQuery) value="target.value"id="searchQuery" }} >Search</button>
+       
+
+    </div>
+
+    <div class="results-neededed">
+      <p>No of results needed per page : </p>
+        {{!-- <input type="number" id="resultsPerPage" value={{this.resultsPerPage}} > --}}
+              <input type="number" id="resultsPerPage" value={{this.resultsPerPage}} onchange={{action (mut this.resultsPerPage) value="target.value"}}>
+
+    </div>  
+  </div>
+  <div>
+</div>
+</div> 
+
+ {{#if this.gotValues}}
+     {{table-modal tableData = this.tableData}}
+ {{/if}}
+
+  <div class="results-Container">
+  {{#if this.searchResults}}
+  <div class="view-of-datas">
+  <div class="table-view" {{on "click" this.switchToTableView}}>
+    <img src="assets/images/table-view.png" alt="table view icon">
+  </div>
+  <div class="list-view" {{on "click" this.switchToListView}}>
+    <img src="assets/images/list-view.png" alt="list view icon">
+  </div>
+</div>
+
+  <div class = "page-container">
+    <p>Page {{this.page}} of {{this.pageSize}}</p>
+  </div>
+    <div class="left-button" {{on "click" this.previous}}>
+      <img src="assets/images/left.png" alt="left arrow">
+    </div>
+
+
+{{#if this.isTableView}}
+<div class="log-table">
+  <table>
+     <thead>
+        <tr>
+            <th>Record Number</th>
+            <th>Time Created</th>
+            <th>
+                Provider Name 
+                <img {{on "click" (fn this.handleMenuClick "ProviderNameMenuClicked")}} class="menu-icon" src="assets/images/threedots.png" alt="three dots icon">
+               {{#if this.ProviderNameMenuClicked}}
+                 <select id="TypeofValues" onchange={{action "getTypeOfValues" }}>
+                    <option value="">Select Type of Values</option>
+                    <option value="least">Least Values</option>
+                    <option value="top">Top Values</option>
+                  </select>
+               {{/if}}
+
+            </th>
+            <th> 
+                Level 
+                <img {{on "click" (fn this.handleMenuClick "LevelMenuClicked")}} src="assets/images/threedots.png" alt="three dots icon" class="menu-icon">
+                {{#if this.LevelMenuClicked}}
+                 <select id="TypeofValues" onchange={{action "getTypeOfValues" }}>
+                    <option value="">Select Type of Values</option>
+                    <option value="least">Least Values</option>
+                    <option value="top">Top Values</option>
+                  </select>
+               {{/if}}
+            
+            </th>
+            <th>
+                Task
+                <img {{on "click" (fn this.handleMenuClick "TaskMenuClicked")}} src="assets/images/threedots.png" alt="three dots icon" class="menu-icon">
+                {{#if this.TaskMenuClicked}}
+                 <select id="TypeofValues" onchange={{action "getTypeOfValues" }}>
+                    <option value="">Select Type of Values</option>
+                    <option value="least">Least Values</option>
+                    <option value="top">Top Values</option>
+                  </select>
+               {{/if}}
+            
+          
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+     
+        {{#each this.paginatedResults as |result|}}
+            <tr>
+                <td>{{result.eventrecordid}}</td>
+                <td>{{result.system_time}}</td>
+                <td>{{result.provider_name}}</td>
+                <td>{{result.level}}</td>
+                <td>{{result.task}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+{{/if}}
+    
+{{#if this.isListView}}
+  <div class="list-view-content">
+    {{#each this.paginatedResults as |result|}}
+      <div class="list-item-box">
+        <div class="list-item">
+          {{#each-in result as |key value|}}
+            {{#if value}}
+              <div class="list-item-property" {{action 'logKeyAndValue' key value}}>
+                  {{key}}: {{value}}
+              </div>
+            {{/if}}
+          {{/each-in}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+
+
+    <div class="right-button" {{on "click" this.next}}>
+      <img src="assets/images/right.png" alt="right arrow">
+    </div>
+    <div class="next-set-button">
+<button class="btn" {{on "click" this.nextSet}}   disabled={{unless this.moreResultsAvailable "disabled"}}>Need Next Set ? Click me!</button>
+    </div>
+  {{else}}
+  {{#if this.NoResults}}
+      <h3 class = "no-results"><center>No Results Available as per your Queries</center></h3>
+      {{else}}
+        <div class="query-format-container">
+          <h2><center>Query Formats</center></h2>
+          <ul>
+            <li>task = '2'</li>
+            <li>level = '4' and versiom = '0'</li>
+            <li>eventrecordid = '19606' or opcode != '0'</li>
+            <li>Process_ID = '0' or Thread_ID != '0'</li>
+          </ul>
+        </div>
+        <div class="time-container">
+          <h2><center>Last Sync Time</center></h2>
+          <ul>
+            <li>Application Logs : {{this.applicationLastTime}}</li>
+            <li>System Logs : {{this.systemLastTime}}</li>
+          </ul>
+        </div>
+{{/if}}
+
+  {{/if}}
+</div>
+</div> 
+

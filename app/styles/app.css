@@ -1,0 +1,471 @@
+/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.container {
+  max-width: 300px;
+  margin-top: 30px;
+  margin-left: auto;
+  box-shadow:
+    0 4px 8px 0 rgb(0 0 0 / 20%),
+    0 6px 20px 0 rgb(0 0 0 / 19%);
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.checkbox-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.checkbox-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.buttons-container {
+  text-align: center;
+}
+
+h1 {
+  color: #008c76ff;
+  text-shadow:
+    -1px 0 black,
+    0 1px black,
+    1px 0 black,
+    0 -1px black;
+}
+
+.search {
+  margin: 30px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #008c76ff;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: rgb(2 122 104);
+}
+
+.btn:active {
+  background-color: #008c76ff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.search-bar-container {
+  max-width: 370px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#searchInput {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+
+.log-table table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 70px;
+}
+
+.log-table table th,
+.log-table table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.log-table table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.log-table table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.log-table table tbody tr:hover {
+  background-color: #eaeaea;
+}
+
+.log-table th {
+  position: relative;
+}
+
+.log-table th select {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.log-table th img.menu-icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  align-items: end;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.log-table th select option {
+  padding: 5px;
+}
+
+
+
+.imageForLoading {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.imageForSuccess {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.imageForLoading img {
+  width: 50px;
+  height: auto;
+}
+
+.imageForSuccess img {
+  width: 50px;
+  height: 50px;
+}
+
+.left-button,
+.right-button {
+  position: fixed;
+  top: 80%;
+  cursor: pointer;
+}
+
+.left-button {
+  left: 30px;
+}
+
+.right-button {
+  right: 30px;
+}
+
+.left-button img,
+.right-button img {
+  width: 30px;
+}
+
+.next-set-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.next-set-button .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #008c76ff;
+  color: #fff;
+}
+
+.next-set-button .btn:hover {
+  background-color: rgb(2 122 104);
+}
+
+.results-Container {
+  position: relative;
+}
+
+.results-neededed {
+  display: flex;
+  align-items: center;
+}
+
+.results-neededed p {
+  margin-right: 10px;
+}
+
+#resultsPerPage {
+  width: 50px;
+}
+
+.page-container {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  background-color: #008c76ff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.page-container p {
+  margin: 0;
+}
+
+.suggestions-container {
+  display: block;
+}
+
+.suggestion-box {
+  display: block;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.suggestion-box:hover {
+  background-color: #e0e0e0;
+}
+
+.query-format-container {
+  position: relative;
+  max-width: 300px;
+  left: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.query-format-container h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.query-format-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.query-format-container li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.query-format-container li::before {
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.no-results {
+  color: #008c76ff;
+  text-shadow:
+    -1px 0 black,
+    0 1px black,
+    1px 0 black,
+    0 -1px black;
+}
+
+.parent-container {
+  position: relative;
+}
+
+.time-container {
+  position: absolute;
+  bottom: 20px;
+  max-width: 450px;
+  right: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.time-container h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.time-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.time-container li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.time-container li::before {
+  display: inline-block;
+  width: 1em;
+  margin-right: -1em;
+}
+
+.view-of-datas {
+  position: relative;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  left: 80px;
+}
+
+.table-view,
+.list-view {
+  margin-right: 10px;
+}
+
+.table-view img {
+  width: 25px;
+  height: auto;
+}
+
+.list-view img {
+  width: 30px;
+  height: auto;
+}
+
+.list-view-content {
+  margin: 70px;
+}
+
+.list-view-content {
+  width: 90%;
+  margin: 70px;
+}
+
+.list-item-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-view-content {
+  width: 90%;
+  margin: 70px;
+}
+
+.list-item-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.list-item {
+  padding: 8px;
+}
+
+.list-item-property {
+  padding: 8px;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.list-item:hover {
+  background-color: #eaeaea;
+}
+
+ /* .modal {
+    position: fixed;
+    top: 20%;
+    right: 20%;
+    transform: translate(-50%, -50%);
+    /* background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    width: 50px; 
+    height: 100px; 
+  }  */
+
+
+/* .menu-icon{
+  width:10px;
+  height:10px;
+  align-items: end;
+}
+
+
+.dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 5px;
+  z-index: 1000;
+  top: -40px; 
+}
+
+.dropdown select {
+  width: 120px; 
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+} */
+
+/* .menu-icon {
+  cursor: pointer;
+} */
+
+
+#TypeofValues {
+  margin-top: -30px;
+}
